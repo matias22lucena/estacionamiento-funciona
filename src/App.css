@@ -1,0 +1,70 @@
+.menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+.autos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.auto-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+.boton{
+    margin-left: 500px;
+}
+/* Agrega estos estilos al final de tu archivo CSS */
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+}
+
+input[type="text"], input[type="password"], input[type="number"] {
+    width: 50%;
+    padding: 0.5rem;
+    border-radius: 0.3rem;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+    box-sizing: border-box;
+}
+
+button {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 0.3rem;
+    border: none;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+.autos-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.auto-card {
+    width: 45%; /* Ajusta el tamaño de cada tarjeta de auto */
+    margin-right: 2%; /* Agrega un margen entre las tarjetas */
+    margin-bottom: 1rem; /* Agrega un margen inferior a cada tarjeta */
+}
+
+#letra{
+    font-size: 20px;
+} 
+
+    
