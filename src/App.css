@@ -1,70 +1,157 @@
+/* Estilos generales */
 .menu {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
+    background-color: #333;
+    color: #fff;
 }
 
-.autos-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
-}
-
-.auto-card {
-    border: 1px solid #ccc;
-    padding: 10px;
-}
-
-.boton{
-    margin-left: 500px;
-}
-/* Agrega estos estilos al final de tu archivo CSS */
-
-.form-group {
-    margin-bottom: 1rem;
-}
-
-label {
-    display: block;
-}
-
-input[type="text"], input[type="password"], input[type="number"] {
-    width: 50%;
-    padding: 0.5rem;
-    border-radius: 0.3rem;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-    box-sizing: border-box;
-}
-
-button {
-    padding: 0.5rem 1rem;
-    font-size: 1rem;
-    border-radius: 0.3rem;
-    border: none;
+.boton {
     background-color: #007bff;
     color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-button:hover {
+.boton:hover {
     background-color: #0056b3;
+}
+
+.login-registrar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.login, .registrar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* background-color: #f9f9f9; */
+    margin: 10px;
+    width: 300px;
+}
+
+.login h2, .registrar h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.login input, .registrar input {
+    padding: 10px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.login button, .registrar button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 1rem;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login button:hover, .registrar button:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos para el formulario de agregar autos */
+.agregar-auto-form {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* background-color: #f9f9f9; */
+}
+
+.agregar-auto-form h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.agregar-auto-form label {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+.agregar-auto-form input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.agregar-auto-form button {
+    padding: 10px 20px;
+    margin-top: 10px;
+    font-size: 1rem;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.agregar-auto-form button:hover {
+    background-color: #218838;
+}
+
+/* Estilos para la búsqueda de autos */
+.buscar-auto {
+    width: 50%;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    /* background-color: #f9f9f9; */
+}
+
+.buscar-auto h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+.buscar-auto input {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
 }
 
 .autos-grid {
     display: flex;
     flex-wrap: wrap;
 }
-
 .auto-card {
-    width: 45%; /* Ajusta el tamaño de cada tarjeta de auto */
+    width: 30%; /* Ajusta el tamaño de cada tarjeta de auto */
     margin-right: 2%; /* Agrega un margen entre las tarjetas */
-    margin-bottom: 1rem; /* Agrega un margen inferior a cada tarjeta */
+    margin-bottom: 2rem; /* Agrega un margen inferior a cada tarjeta */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 5px;
 }
-
-#letra{
-    font-size: 20px;
-} 
-
-    
+div{
+    margin-left: 0.5px;
+}
+.buscar{
+    width: 50%;
+}
