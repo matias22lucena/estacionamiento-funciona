@@ -202,7 +202,7 @@ const App = () => {
                         <h2>Buscar Vehículo</h2>
                         <input type="text" className='buscar' placeholder="Buscar por modelo o patente" value={search} onChange={(e) => setSearch(e.target.value)} />
                     </div>
-                    <h2>Autos</h2>
+                    <h2>Vehículos</h2>
                     <div className="autos-grid">
                         {autos
                             .filter(
