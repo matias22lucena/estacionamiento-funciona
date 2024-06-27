@@ -77,6 +77,17 @@ app.post('/cobrar', async (req, res) => {
     }
 });
 
+// Ruta para eliminar un auto
+app.delete('/eliminarAuto/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        await Car.findByIdAndDelete(id);
+        res.send({ message: 'Auto eliminado exitosamente' });
+    } catch (error) {
+        res.status(500).send({ message: 'Error al eliminar el auto' });
+    }
+});
+
 app.listen(5001, () => {
     console.log('Servidor está corriendo en el puerto 5001');
 });

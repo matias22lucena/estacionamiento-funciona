@@ -41,6 +41,9 @@ const App = () => {
             await axios.post('http://localhost:5001/registrar', { username, password });
             alert('Usuario registrado exitosamente');
             setShowLoginForm(true);
+            // Limpiar los inputs
+            setUsername('');
+            setPassword('');
         } catch (error) {
             console.error('Error al registrar:', error);
         }
@@ -53,6 +56,9 @@ const App = () => {
                 setLoggedIn(true);
                 localStorage.setItem('currentUser', username);
                 setShowLoginForm(false);
+                // Limpiar los inputs
+                setUsername('');
+                setPassword('');
             } else {
                 alert('Credenciales inválidas');
             }
@@ -71,17 +77,59 @@ const App = () => {
             await axios.post('http://localhost:5001/agregarAuto', { modelo, patente });
             alert('Auto agregado exitosamente');
             obtenerAutos();
+            // Limpiar los inputs
+            setModelo('');
+            setPatente('');
         } catch (error) {
             console.error('Error al agregar el auto:', error);
         }
     };
 
+    // const cobrar = async (id, precioPorHora) => {
+    //     try {
+    //         const response = await axios.post('http://localhost:5001/cobrar', { id });
+    //         const duracion = (new Date(response.data.horaSalida) - new Date(response.data.horaIngreso)) / 1000 / 60 / 60; // horas
+    //         const costo = duracion * precioPorHora;
+
+    //         const updatedAutos = autos.map(auto => {
+    //             if (auto._id === id) {
+    //                 return { ...auto, costoTotal: costo, horaSalida: response.data.horaSalida, cobrado: true };
+    //             }
+    //             return auto;
+    //         });
+    //         setAutos(updatedAutos);
+    //     } catch (error) {
+    //         console.error('Error al cobrar:', error);
+    //     }
+    // };
+
+    // const cobrar = async (id, precioPorHora) => {
+    //     try {
+    //         const response = await axios.post('http://localhost:5001/cobrar', { id });
+    //         const duracion = (new Date(response.data.horaSalida) - new Date(response.data.horaIngreso)) / 1000 / 60 / 60; // horas
+    //         const costo = duracion * precioPorHora;
+    
+    //         const updatedAutos = autos.map(auto => {
+    //             if (auto._id === id) {
+    //                 return { ...auto, costoTotal: costo, horaSalida: response.data.horaSalida, cobrado: true };
+    //             }
+    //             return auto;
+    //         });
+    //         setAutos(updatedAutos);
+    
+    //         // Eliminar el auto de la base de datos y del front-end
+    //         eliminarAuto(id);
+    //     } catch (error) {
+    //         console.error('Error al cobrar:', error);
+    //     }
+    // };
+    
     const cobrar = async (id, precioPorHora) => {
         try {
             const response = await axios.post('http://localhost:5001/cobrar', { id });
             const duracion = (new Date(response.data.horaSalida) - new Date(response.data.horaIngreso)) / 1000 / 60 / 60; // horas
             const costo = duracion * precioPorHora;
-
+    
             const updatedAutos = autos.map(auto => {
                 if (auto._id === id) {
                     return { ...auto, costoTotal: costo, horaSalida: response.data.horaSalida, cobrado: true };
@@ -93,11 +141,22 @@ const App = () => {
             console.error('Error al cobrar:', error);
         }
     };
+    
 
-    const eliminarAuto = (id) => {
-        const updatedAutos = autos.filter(auto => auto._id !== id);
-        setAutos(updatedAutos);
+    // const eliminarAuto = (id) => {
+    //     const updatedAutos = autos.filter(auto => auto._id !== id);
+    //     setAutos(updatedAutos);
+    // };
+    const eliminarAuto = async (id) => {
+        try {
+            await axios.delete(`http://localhost:5001/eliminarAuto/${id}`);
+            const updatedAutos = autos.filter(auto => auto._id !== id);
+            setAutos(updatedAutos);
+        } catch (error) {
+            console.error('Error al eliminar el auto:', error);
+        }
     };
+    
 
     return (
         <div>
@@ -178,6 +237,9 @@ const App = () => {
                                             <p><strong>Hora de Salida:</strong> {new Date(auto.horaSalida).toLocaleString('es-ES', { dateStyle: 'short', timeStyle: 'short', hour12: true })}</p>
                                         </>
                                     )}
+                                    {/* <button onClick={() => auto.cobrado ? eliminarAuto(auto._id) : cobrar(auto._id, auto.precioPorHora)}>
+                                        {auto.cobrado ? 'OK' : 'Cobrar'}
+                                    </button> */}
                                     <button onClick={() => auto.cobrado ? eliminarAuto(auto._id) : cobrar(auto._id, auto.precioPorHora)}>
                                         {auto.cobrado ? 'OK' : 'Cobrar'}
                                     </button>
@@ -191,5 +253,3 @@ const App = () => {
 };
 
 export default App;
-
-
